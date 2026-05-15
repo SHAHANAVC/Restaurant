@@ -4,7 +4,7 @@ import { Navbar,Container } from 'react-bootstrap'
 function Head() {
   return (
     <div>
-        <Navbar className="bg-body-secondary">
+        <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="#home" style={{fontSize:"26px"}}>
          <span style={{color:"red", fontSize:"35px"}}> R</span>estaurants in Europe

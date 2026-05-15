@@ -16,6 +16,12 @@
     width: 500px;
 }
 
+.list-group-item {
+    background-color: #212529 !important;
+    color: white !important;
+    border-color: #343a40 !important;
+}
+
 @media (max-width: 768px) {
     .main {
         grid-template-columns: 1fr;

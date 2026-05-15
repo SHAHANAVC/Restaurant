@@ -64,8 +64,8 @@ function RestaurentView() {
                   <Button variant="dark" onClick={handleShow}>Operating Hours
                   </Button>
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+      <Modal show={show} onHide={handleClose} contentClassName="bg-dark text-white">
+        <Modal.Header closeButton closeVariant="white">
           <Modal.Title>Operating Hours</Modal.Title>
         </Modal.Header>
         <Modal.Body>
