@@ -1,17 +1,16 @@
-.main{
-    margin-top: 5%;
-    margin-left: 3%;
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto;
-    justify-content:start;
-    column-gap: 5cap;
-}
-.image{
+.image {
     border: solid 1px rgb(162, 158, 158);
-    width: 400px;
-    height: 500px;
+    transition: transform 0.3s ease;
 }
-.list{
-    width: 500px;
+
+.image:hover {
+    transform: scale(1.02);
+}
+
+.list-group-item {
+    transition: background-color 0.2s ease;
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa;
 }

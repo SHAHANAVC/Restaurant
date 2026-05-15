@@ -4,15 +4,17 @@ import { Link } from 'react-router-dom'
 
 function CardDisplay({data}) {
   return (
-    <div style={{marginTop:'4%',marginLeft:'2%'}}>
-      <Link to={`/view/${data.id}`} style={{textDecoration:'none'}}>
-         <Card style={{ width: '18rem',height:"25rem" }}>
-      <Card.Img variant="top" style={{height:'35vh'}} src={data.photograph} />
-      <Card.Body>
-        <Card.Title>{data.name}</Card.Title>
-        <Card.Text>{data.address}
+    <div className="h-100">
+      <Link to={`/view/${data.id}`} style={{textDecoration:'none'}} className="h-100 text-dark">
+         <Card className="h-100 shadow-sm transition-all hover-shadow">
+      <Card.Img variant="top" style={{height:'200px', objectFit: 'cover'}} src={data.photograph} />
+      <Card.Body className="d-flex flex-column">
+        <Card.Title className="text-truncate">{data.name}</Card.Title>
+        <Card.Text className="text-muted flex-grow-1">{data.address}
         </Card.Text>
-        {data.neighborhood}
+        <div className="mt-auto fw-bold text-primary">
+          {data.neighborhood}
+        </div>
       </Card.Body>
     </Card>
     </Link>
