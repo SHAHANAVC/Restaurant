@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { ListGroup, Image, Container, Row, Col } from 'react-bootstrap';
+import { ListGroup,Image } from 'react-bootstrap';
 import '../css/View.css'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -48,67 +48,58 @@ function RestaurentView() {
     
   return (
     
-    <Container className="my-5">
-{checkId ? (
-    <Row className="gy-4">
-        <Col md={6} lg={5}>
-            <Image 
-                src={checkId.photograph} 
-                fluid 
-                rounded 
-                className="shadow-sm w-100" 
-                style={{ maxHeight: '600px', objectFit: 'cover' }}
-            />
-        </Col>
-        <Col md={6} lg={7}>
-            <ListGroup variant="flush" className="shadow-sm rounded border">
-                <ListGroup.Item className="bg-light">
-                    <h1 className="display-5 mb-0">{checkId.name}</h1>
-                </ListGroup.Item>
-                <ListGroup.Item>
-                    <strong>Address:</strong> {checkId.address}
-                </ListGroup.Item>
-                <ListGroup.Item>
-                    <strong>Neighborhood:</strong> {checkId.neighborhood}
-                </ListGroup.Item>
-                <ListGroup.Item>
-                    <Button variant="outline-dark" onClick={handleShow} className="w-100 py-2">
-                        View Operating Hours
-                    </Button>
+    <div>
+{checkId?(
+   
+        <div className='main'>
+            <div >
+            <Image className="image" src={checkId.photograph}rounded />
+            </div>
+            <div >
+                  <ListGroup className='list'>
+                  <ListGroup.Item><h1> {checkId.name}</h1></ListGroup.Item>
+                   <ListGroup.Item>{checkId.address}</ListGroup.Item>
+                  <ListGroup.Item>{checkId.neighborhood}</ListGroup.Item>
+                  <ListGroup.Item>
+                  <Button variant="dark" onClick={handleShow}>Operating Hours
+                  </Button>
 
-                    <Modal show={show} onHide={handleClose} centered>
-                        <Modal.Header closeButton className="bg-dark text-white">
-                            <Modal.Title>Operating Hours</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <ListGroup variant="flush">
-                                {Object.entries(checkId.operating_hours).map(([day, hours]) => (
-                                    <ListGroup.Item key={day} className="d-flex justify-content-between align-items-center">
-                                        <strong>{day}</strong>
-                                        <span className="text-muted">{hours}</span>
-                                    </ListGroup.Item>
-                                ))}
-                            </ListGroup>
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button variant="secondary" onClick={handleClose}>
-                                Close
-                            </Button>
-                        </Modal.Footer>
-                    </Modal>
-                </ListGroup.Item>
-                <ListGroup.Item className="bg-light">
-                    <Review comment={checkId.reviews} />
-                </ListGroup.Item>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Operating Hours</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+
+           <ListGroup>
+              <ListGroup.Item>Monday   :{checkId.operating_hours.Monday}</ListGroup.Item>
+              <ListGroup.Item>Tuesday  :{checkId.operating_hours.Tuesday}</ListGroup.Item>
+              <ListGroup.Item>Wednesday:{checkId.operating_hours.Wednesday}</ListGroup.Item>
+              <ListGroup.Item>Thursday :{checkId.operating_hours.Thursday}</ListGroup.Item>
+              <ListGroup.Item>Friday   :{checkId.operating_hours.Friday}</ListGroup.Item>
+              <ListGroup.Item>Saturday :{checkId.operating_hours.Saturday}</ListGroup.Item>
+              <ListGroup.Item>Sunday   :{checkId.operating_hours.Sunday}</ListGroup.Item>
             </ListGroup>
-        </Col>
-    </Row>
-) : (
-    <div className="text-center py-5">
-        <h3>Loading restaurant details...</h3>
-    </div>
-)}
-</Container>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose}>
+            Close
+          </Button>
+  
+        </Modal.Footer>
+      </Modal>
+                  </ListGroup.Item>
+                   <ListGroup.Item>    
+                    <Review  comment={checkId.reviews}/>
+                   </ListGroup.Item>
+                  </ListGroup> 
+            </div>
+         </div>
+ 
+
+):"error"
+}
+
+   </div>
    
   )
     

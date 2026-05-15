@@ -1,43 +1,38 @@
 import React from 'react'
 import { useState } from 'react';
-import { Button, Collapse, Card } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Collapse from 'react-bootstrap/Collapse';
 
-function Review({ comment }) {
+function Review({comment}) {
+    console.log(comment);
     const [open, setOpen] = useState(false);
-    return (
-        <div className="mt-3">
-            <Button
-                onClick={() => setOpen(!open)}
-                aria-controls="review-collapse"
-                aria-expanded={open}
-                variant="outline-primary"
-                className="w-100"
-            >
-                {open ? 'Hide Reviews' : `Show Reviews (${comment?.length || 0})`}
-            </Button>
-
-            <Collapse in={open}>
-                <div id="review-collapse" className="mt-3">
-                    {comment && comment.map((a, index) => (
-                        <Card key={index} className="mb-3 border-0 bg-white shadow-sm">
-                            <Card.Body>
-                                <div className="d-flex justify-content-between align-items-center mb-2">
-                                    <h6 className="mb-0 fw-bold">{a.name}</h6>
-                                    <span className="badge bg-warning text-dark">{a.rating} ★</span>
-                                </div>
-                                <Card.Text className="small text-muted mb-1">
-                                    {a.date}
-                                </Card.Text>
-                                <Card.Text>
-                                    "{a.comments}"
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    ))}
+  return (
+    <div>
+      <Button
+        onClick={() => setOpen(!open)}
+        aria-controls="example-collapse-text"
+        aria-expanded={open}
+        variant="dark"
+      >
+        Reviews
+      </Button>
+      
+      <Collapse in={open}>
+      
+        <div id="example-collapse-text">
+        {comment.map(a=>(
+            <div>
+                <h3>{a.name}</h3>
+                <p>{a.comments}</p>
                 </div>
+        
+        ))}
+        </div>  
             </Collapse>
-        </div>
-    )
+
+      
+    </div>
+  )
 }
 
 export default Review

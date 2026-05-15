@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import CardDisplay from './CardDisplay'
-import { Container, Row,Col } from 'react-bootstrap'
+import { Row,Col, Container } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { Resturent_list } from '../actions/Homeaction'
 function Home() {
@@ -27,8 +27,8 @@ function Home() {
     },[])
 
   return (
-    <Container className="mt-4">
-        <Row className="g-4">
+    <Container fluid>
+        <Row>
             {restaurants && restaurants.map(a=>(
                   <Col key={a.id} xs={12} sm={6} md={4} lg={3}>
                      <CardDisplay data={a}/>
